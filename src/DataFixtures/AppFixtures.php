@@ -10,7 +10,7 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        UserFactory::createOne(['email' => 'admin@example.com']);
+        UserFactory::createOne(['email' => 'admin@example.com', 'roles' => ['ROLE_ADMIN']]);
         UserFactory::createMany(10);
 
         $manager->flush();

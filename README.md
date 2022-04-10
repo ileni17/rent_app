@@ -1,8 +1,8 @@
 # rent_app
 
-**Database setup** </ br>
-Requirements: Docker desktop - https://www.docker.com/products/docker-desktop/ </ br>
-</ br>
-**Credentials** </ br>
-Email: admin@example.com </ br>
-Password: admin </ br>
+**Database setup**
+Requirements: Docker desktop - https://www.docker.com/products/docker-desktop/
+
+**Credentials**
+Email: admin@example.com
+Password: admin

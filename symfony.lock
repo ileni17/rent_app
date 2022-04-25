@@ -137,6 +137,18 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "stof/doctrine-extensions-bundle": {
+        "version": "1.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.2",
+            "ref": "e805aba9eff5372e2d149a9ff56566769e22819d"
+        },
+        "files": [
+            "config/packages/stof_doctrine_extensions.yaml"
+        ]
+    },
     "symfony/cache": {
         "version": "v5.4.3"
     },
@@ -209,6 +221,9 @@
             ".env"
         ]
     },
+    "symfony/form": {
+        "version": "v5.4.7"
+    },
     "symfony/framework-bundle": {
         "version": "5.4",
         "recipe": {
@@ -258,11 +273,17 @@
             "config/packages/monolog.yaml"
         ]
     },
+    "symfony/options-resolver": {
+        "version": "v5.4.3"
+    },
     "symfony/password-hasher": {
         "version": "v5.4.3"
     },
     "symfony/polyfill-intl-grapheme": {
         "version": "v1.24.0"
+    },
+    "symfony/polyfill-intl-icu": {
+        "version": "v1.25.0"
     },
     "symfony/polyfill-intl-normalizer": {
         "version": "v1.24.0"
@@ -361,6 +382,18 @@
     },
     "symfony/uid": {
         "version": "v5.4.3"
+    },
+    "symfony/validator": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.3",
+            "ref": "c32cfd98f714894c4f128bb99aa2530c1227603c"
+        },
+        "files": [
+            "config/packages/validator.yaml"
+        ]
     },
     "symfony/var-dumper": {
         "version": "v5.4.3"

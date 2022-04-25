@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\TypeOfVehicle;
 use App\Repository\VehicleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -16,12 +17,12 @@ class Vehicle extends Entity
     private $brand;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", enumType=TypeOfVehicle::class)
      */
     private $type;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $yearOfManufacture;
 
@@ -37,24 +38,24 @@ class Vehicle extends Entity
         return $this;
     }
 
-    public function getType(): ?int
+    public function getType(): ?TypeOfVehicle
     {
         return $this->type;
     }
 
-    public function setType(int $type): self
+    public function setType(TypeOfVehicle $type): self
     {
         $this->type = $type;
 
         return $this;
     }
 
-    public function getYearOfManufacture(): ?\DateTimeInterface
+    public function getYearOfManufacture(): ?int
     {
         return $this->yearOfManufacture;
     }
 
-    public function setYearOfManufacture(?\DateTimeInterface $yearOfManufacture): self
+    public function setYearOfManufacture(?int $yearOfManufacture): self
     {
         $this->yearOfManufacture = $yearOfManufacture;
 

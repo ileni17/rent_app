@@ -14,17 +14,22 @@ class Vehicle extends Entity
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $brand;
+    private ?string $brand;
 
     /**
      * @ORM\Column(type="integer", enumType=TypeOfVehicle::class)
      */
-    private $type;
+    private ?TypeOfVehicle $type;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $yearOfManufacture;
+    private ?int $yearOfManufacture;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $availableFrom;
 
     public function getBrand(): ?string
     {
@@ -58,6 +63,18 @@ class Vehicle extends Entity
     public function setYearOfManufacture(?int $yearOfManufacture): self
     {
         $this->yearOfManufacture = $yearOfManufacture;
+
+        return $this;
+    }
+
+    public function getAvailableFrom(): ?\DateTimeInterface
+    {
+        return $this->availableFrom;
+    }
+
+    public function setAvailableFrom(?\DateTimeInterface $availableFrom): self
+    {
+        $this->availableFrom = $availableFrom;
 
         return $this;
     }

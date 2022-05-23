@@ -16,11 +16,9 @@
                 <th>Id</th>
                 <th>Brand</th>
                 <th>Type</th>
-                <th>YearOfManufacture</th>
+                <th>Manufactured</th>
                 <th>CreatedBy</th>
-                <th>UpdatedBy</th>
                 <th>CreatedAt</th>
-                <th>UpdatedAt</th>
                 <th></th>
             </tr>
             </thead>
@@ -32,21 +30,22 @@
                     <td>{{ vehicle.type.name }}</td>
                     <td>{{ vehicle.yearOfManufacture ? vehicle.yearOfManufacture|date('Y') : '' }}</td>
                     <td>{{ vehicle.createdBy }}</td>
-                    <td>{{ vehicle.updatedBy }}</td>
                     <td>{{ vehicle.createdAt ? vehicle.createdAt|date : '' }}</td>
-                    <td>{{ vehicle.updatedAt ? vehicle.updatedAt|date : '' }}</td>
                     <td>
-                        <a href="{{ path('app_vehicle_show', {'id': vehicle.id}) }}">show</a>
-                        <a href="{{ path('app_vehicle_edit', {'id': vehicle.id}) }}">edit</a>
+                        <a class="btn btn-secondary"
+                                href="{{ path('app_vehicle_show', {'id': vehicle.id}) }}">Show
+                        </a>
+                        <a type="button" class="btn btn-primary"
+                                href="{{ path('app_vehicle_edit', {'id': vehicle.id}) }}">Edit
+                        </a>
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="9">no records found</td>
+                    <td colspan="9">No records found</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
-
 {% endblock %}

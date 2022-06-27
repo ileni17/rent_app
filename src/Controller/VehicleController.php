@@ -13,7 +13,13 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/vehicle')]
 class VehicleController extends AbstractController
 {
-    #[Route('/', name: 'app_vehicle_index', methods: ['GET'])]
+    public const ROUTE_INDEX = 'vehicle_index';
+    public const ROUTE_NEW = 'vehicle_new';
+    public const ROUTE_EDIT = 'vehicle_edit';
+    public const ROUTE_SHOW = 'vehicle_show';
+    public const ROUTE_DELETE = 'vehicle_delete';
+
+    #[Route('/', name: self::ROUTE_INDEX, methods: ['GET'])]
     public function index(VehicleRepository $vehicleRepository): Response
     {
         return $this->render('vehicle/index.html.twig', [
@@ -21,7 +27,7 @@ class VehicleController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_vehicle_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: self::ROUTE_NEW, methods: ['GET', 'POST'])]
     public function new(Request $request, VehicleRepository $vehicleRepository): Response
     {
         $vehicle = new Vehicle();
@@ -39,7 +45,7 @@ class VehicleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_vehicle_show', methods: ['GET'])]
+    #[Route('/{id}/show', name: self::ROUTE_SHOW, methods: ['GET'])]
     public function show(Vehicle $vehicle): Response
     {
         return $this->render('vehicle/show.html.twig', [
@@ -47,7 +53,7 @@ class VehicleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_vehicle_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: self::ROUTE_EDIT, methods: ['GET', 'POST'])]
     public function edit(Request $request, Vehicle $vehicle, VehicleRepository $vehicleRepository): Response
     {
         $form = $this->createForm(VehicleType::class, $vehicle);
@@ -64,7 +70,7 @@ class VehicleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_vehicle_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: self::ROUTE_DELETE, methods: ['POST'])]
     public function delete(Request $request, Vehicle $vehicle, VehicleRepository $vehicleRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$vehicle->getId(), $request->request->get('_token'))) {

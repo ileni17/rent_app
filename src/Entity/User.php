@@ -18,24 +18,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $email;
+    private ?string $email;
 
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private array $roles = [];
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $password;
+    private ?string $password;
 
-    private $plainPassword;
+    private mixed $plainPassword;
 
     /**
      * @return mixed
@@ -48,7 +48,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @param mixed $plainPassword
      */
-    public function setPlainPassword($plainPassword): self
+    public function setPlainPassword(mixed $plainPassword): self
     {
         $this->plainPassword = $plainPassword;
 

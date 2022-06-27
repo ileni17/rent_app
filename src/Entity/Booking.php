@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BookingRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * @ORM\Entity(repositoryClass=BookingRepository::class)
@@ -14,12 +15,12 @@ class Booking extends Entity
      * @ORM\ManyToOne(targetEntity=Vehicle::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $vehicle;
+    private Vehicle $vehicle;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $numberOfDays;
+    private ?int $numberOfDays;
 
     public function getVehicle(): ?Vehicle
     {

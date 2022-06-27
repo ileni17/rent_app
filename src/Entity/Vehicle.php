@@ -29,7 +29,7 @@ class Vehicle extends Entity
     /**
      * @ORM\Column(type="date", nullable=true)
      */
-    private $availableFrom;
+    private ?\DateTimeInterface $availableFrom;
 
     public function getBrand(): ?string
     {

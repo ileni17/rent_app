@@ -13,7 +13,13 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/booking')]
 class BookingController extends AbstractController
 {
-    #[Route('/', name: 'app_booking_index', methods: ['GET'])]
+    public const ROUTE_INDEX = 'booking_index';
+    public const ROUTE_NEW = 'booking_new';
+    public const ROUTE_EDIT = 'booking_edit';
+    public const ROUTE_SHOW = 'booking_show';
+    public const ROUTE_DELETE = 'booking_delete';
+
+    #[Route('/', name: self::ROUTE_INDEX, methods: ['GET'])]
     public function index(BookingRepository $bookingRepository): Response
     {
         return $this->render('booking/index.html.twig', [
@@ -21,7 +27,7 @@ class BookingController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_booking_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: self::ROUTE_NEW, methods: ['GET', 'POST'])]
     public function new(Request $request, BookingRepository $bookingRepository): Response
     {
         $booking = new Booking();
@@ -40,7 +46,7 @@ class BookingController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/show', name: 'app_booking_show', methods: ['GET'])]
+    #[Route('/{id}/show', name: self::ROUTE_SHOW, methods: ['GET'])]
     public function show(Booking $booking): Response
     {
         return $this->render('booking/show.html.twig', [
@@ -48,7 +54,7 @@ class BookingController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_booking_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: self::ROUTE_EDIT, methods: ['GET', 'POST'])]
     public function edit(Request $request, Booking $booking, BookingRepository $bookingRepository): Response
     {
         $form = $this->createForm(BookingType::class, $booking);
@@ -66,7 +72,7 @@ class BookingController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_booking_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: self::ROUTE_DELETE, methods: ['POST'])]
     public function delete(Request $request, Booking $booking, BookingRepository $bookingRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$booking->getId(), $request->request->get('_token'))) {

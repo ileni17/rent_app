@@ -6,7 +6,7 @@
     <div class="col">
         <div class="d-flex align-items-center mb-3">
             <h1>Create new Booking</h1>
-            <a class="btn btn-primary" style="margin-left: auto" href="{{ path('app_booking_index') }}">back to list</a>
+            <a class="btn btn-primary" style="margin-left: auto" href="{{ path(constant('App\\Controller\\BookingController::ROUTE_INDEX')) }}">Back to list</a>
         </div>
 
         {{ include('booking/_form.html.twig') }}

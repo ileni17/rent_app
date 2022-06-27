@@ -7,18 +7,19 @@
         <div class="d-flex align-items-center mb-3">
             <h1>Vehicle</h1>
 
-            <div style="display: flex; margin-left: auto">
-                <a class="btn btn-light" style="margin-right: 10px" href="{{ path('app_vehicle_index') }}">back to
-                    list</a>
-                <a class="btn btn-primary" style="margin-right: 10px"
-                   href="{{ path('app_vehicle_edit', {'id': vehicle.id}) }}">edit</a>
-                {{ include('vehicle/_delete_form.html.twig') }}
-            </div>
-
+            <a class="btn btn-light ml-3" href="{{ path(constant('App\\Controller\\VehicleController::ROUTE_INDEX')) }}">Back to
+                list</a>
+            <a class="btn btn-primary ml-3 mr-3"
+               href="{{ path(constant('App\\Controller\\VehicleController::ROUTE_EDIT'), {'id': vehicle.id}) }}">Edit</a>
+            {{ include('vehicle/_delete_form.html.twig') }}
         </div>
 
         <table class="table">
             <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vehicle.id }}</td>
+            </tr>
             <tr>
                 <th>Brand</th>
                 <td>{{ vehicle.brand }}</td>
@@ -30,10 +31,6 @@
             <tr>
                 <th>YearOfManufacture</th>
                 <td>{{ vehicle.yearOfManufacture ? vehicle.yearOfManufacture|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Id</th>
-                <td>{{ vehicle.id }}</td>
             </tr>
             <tr>
                 <th>CreatedBy</th>

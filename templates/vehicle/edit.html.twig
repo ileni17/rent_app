@@ -8,10 +8,10 @@
             <h1>Edit Vehicle</h1>
 
             <div style="display: flex; margin-left: auto">
-                <a class="btn btn-light" style="margin-right: 10px" href="{{ path('app_vehicle_index') }}">back to
+                <a class="btn btn-light" style="margin-right: 10px" href="{{ path(constant('App\\Controller\\VehicleController::ROUTE_INDEX')) }}">Back to
                     list</a>
                 <a class="btn btn-primary" style="margin-right: 10px"
-                   href="{{ path('app_vehicle_edit', {'id': vehicle.id}) }}">edit</a>
+                   href="{{ path(constant('App\\Controller\\VehicleController::ROUTE_EDIT'), {'id': vehicle.id}) }}">Edit</a>
                 {{ include('vehicle/_delete_form.html.twig') }}
             </div>
 

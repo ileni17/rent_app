@@ -7,10 +7,10 @@
         <div class="d-flex align-items-center mb-3">
             <h1>Booking index</h1>
 
-            <a class="btn btn-success" style="margin-left: auto" href="{{ path('app_booking_new') }}">Create new</a>
+            <a class="btn btn-success ml-3" href="{{ path(constant('App\\Controller\\BookingController::ROUTE_NEW')) }}">Create new</a>
         </div>
 
-        <table class="table">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Id</th>
@@ -28,7 +28,7 @@
                     <td>{{ booking.createdBy }}</td>
                     <td>{{ booking.createdAt ? booking.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                     <td>
-                        <a type="button" class="btn btn-secondary" href="{{ path('app_booking_show', {'id': booking.id}) }}">Show</a>
+                        <a type="button" class="btn btn-secondary" href="{{ path(constant('App\\Controller\\BookingController::ROUTE_SHOW'), {'id': booking.id}) }}">Show</a>
                     </td>
                 </tr>
             {% else %}

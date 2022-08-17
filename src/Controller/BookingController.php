@@ -15,9 +15,7 @@ class BookingController extends AbstractController
 {
     public const ROUTE_INDEX = 'booking_index';
     public const ROUTE_NEW = 'booking_new';
-    public const ROUTE_EDIT = 'booking_edit';
     public const ROUTE_SHOW = 'booking_show';
-    public const ROUTE_DELETE = 'booking_delete';
 
     #[Route('/', name: self::ROUTE_INDEX, methods: ['GET'])]
     public function index(BookingRepository $bookingRepository): Response
@@ -37,7 +35,7 @@ class BookingController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $bookingRepository->add($booking, true);
 
-            return $this->redirectToRoute('app_booking_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute(self::ROUTE_INDEX, [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('booking/new.html.twig', [
@@ -52,33 +50,5 @@ class BookingController extends AbstractController
         return $this->render('booking/show.html.twig', [
             'booking' => $booking,
         ]);
-    }
-
-    #[Route('/{id}/edit', name: self::ROUTE_EDIT, methods: ['GET', 'POST'])]
-    public function edit(Request $request, Booking $booking, BookingRepository $bookingRepository): Response
-    {
-        $form = $this->createForm(BookingType::class, $booking);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $bookingRepository->add($booking, true);
-
-            return $this->redirectToRoute('app_booking_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('booking/edit.html.twig', [
-            'booking' => $booking,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}/delete', name: self::ROUTE_DELETE, methods: ['POST'])]
-    public function delete(Request $request, Booking $booking, BookingRepository $bookingRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$booking->getId(), $request->request->get('_token'))) {
-            $bookingRepository->remove($booking, true);
-        }
-
-        return $this->redirectToRoute('app_booking_index', [], Response::HTTP_SEE_OTHER);
     }
 }

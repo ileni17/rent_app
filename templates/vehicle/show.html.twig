@@ -30,7 +30,7 @@
             </tr>
             <tr>
                 <th>YearOfManufacture</th>
-                <td>{{ vehicle.yearOfManufacture ? vehicle.yearOfManufacture|date('Y-m-d') : '' }}</td>
+                <td>{{ vehicle.yearOfManufacture ?? '-' }}</td>
             </tr>
             <tr>
                 <th>CreatedBy</th>

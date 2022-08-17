@@ -28,7 +28,7 @@
                     <td>{{ vehicle.id }}</td>
                     <td>{{ vehicle.brand }}</td>
                     <td>{{ vehicle.type ? vehicle.type.name }}</td>
-                    <td>{{ vehicle.yearOfManufacture ? vehicle.yearOfManufacture|date('Y') : '' }}</td>
+                    <td>{{ vehicle.yearOfManufacture ?? '-' }}</td>
                     <td>{{ vehicle.createdBy }}</td>
                     <td>{{ vehicle.createdAt ? vehicle.createdAt|date : '' }}</td>
                     <td>

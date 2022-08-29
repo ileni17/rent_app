@@ -27,7 +27,7 @@ class Vehicle extends Entity
     private ?int $yearOfManufacture;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private ?\DateTimeInterface $availableFrom;
 

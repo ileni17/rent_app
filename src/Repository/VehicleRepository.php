@@ -73,4 +73,16 @@ class VehicleRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getAvailableVehicles(): mixed
+    {
+        $currentDate = new \DateTime();
+
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.availableFrom < :currentDate')
+            ->setParameter('currentDate', $currentDate)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

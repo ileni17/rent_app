@@ -24,18 +24,20 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ path(constant('App\\Controller\\DefaultController::ROUTE_HOMEPAGE')) }}">Home</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ path(constant('App\\Controller\\BookingController::ROUTE_INDEX')) }}">Booking</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ path(constant('App\\Controller\\VehicleController::ROUTE_INDEX')) }}">Vehicles</a>
-            </li>
             {% if app.user %}
+                <li class="nav-item active">
+                    <a class="nav-link"
+                       href="{{ path(constant('App\\Controller\\DefaultController::ROUTE_HOMEPAGE')) }}">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path(constant('App\\Controller\\BookingController::ROUTE_INDEX')) }}">Booking</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path(constant('App\\Controller\\VehicleController::ROUTE_INDEX')) }}">Vehicles</a>
+                </li>
                 <li class="nav-item active" style="position:absolute; right:25px;">
-                    <a class="nav-link text-black-50" href="{{ path(constant('App\\Controller\\SecurityController::ROUTE_LOGOUT')) }}">Log Out</a>
+                    <a class="nav-link text-black-50"
+                       href="{{ path(constant('App\\Controller\\SecurityController::ROUTE_LOGOUT')) }}">Log Out</a>
                 </li>
             {% endif %}
         </ul>

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220523200001 extends AbstractMigration
+final class Version20220829214210 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -22,7 +22,7 @@ final class Version20220523200001 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE booking (id BINARY(16) NOT NULL COMMENT \'(DC2Type:uuid)\', vehicle_id BINARY(16) NOT NULL COMMENT \'(DC2Type:uuid)\', number_of_days INT NOT NULL, created_by VARCHAR(255) DEFAULT NULL, updated_by VARCHAR(255) DEFAULT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX IDX_E00CEDDE545317D1 (vehicle_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE booking ADD CONSTRAINT FK_E00CEDDE545317D1 FOREIGN KEY (vehicle_id) REFERENCES vehicle (id)');
-        $this->addSql('ALTER TABLE vehicle ADD available_from DATE DEFAULT NULL');
+        $this->addSql('ALTER TABLE vehicle ADD available_from DATETIME DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
